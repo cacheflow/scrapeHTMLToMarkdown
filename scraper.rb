@@ -1,16 +1,13 @@
-require "open-uri"
 require "nokogiri"
+require "reverse_markdown"
+require "open-uri"
 
-class Site
+class  
 
+page = Nokogiri::HTML(open("http://blog.agupieware.com/2014/06/online-learning-intensive-bachelors.html"))
 
-  def convert(website)
-    page = Nokogiri::HTML(open(website))
-    index_html = File.new("Index.html", "w+")
-    index_html << page
-    puts "I'm done scraping #{website}"
-  end
-end
+convert_to_markdown = ReverseMarkdown.convert(page)
+markdown = File.open("Page.md", "a+")
+markdown << convert_to_markdown
 
-site = Site.new
-  site.convert("http://blog.agupieware.com/2014/06/online-learning-intensive-bachelors.html")
+puts markdown
