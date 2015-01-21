@@ -2,7 +2,7 @@ require "nokogiri"
 require "reverse_markdown"
 require "open-uri"
 
-class  
+ 
 
 page = Nokogiri::HTML(open("http://blog.agupieware.com/2014/06/online-learning-intensive-bachelors.html"))
 
